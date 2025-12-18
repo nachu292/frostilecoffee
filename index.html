@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frostile Coffee Making - Brewed to Perfection</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:wght@400;500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         /* ===== GLOBAL RESET & BASE STYLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         :root {
@@ -38,6 +36,8 @@
             color: var(--text-dark);
             background-color: var(--light-color);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* ===== NAVIGATION BAR ===== */
@@ -129,7 +129,7 @@
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(44, 24, 16, 0.6), rgba(44, 24, 16, 0.7)),
-                url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1600&q=80') center/cover;
+                        url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1600&q=80') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -395,55 +395,282 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
+        /* ===== MOBILE-FIRST ENHANCEMENTS ===== */
+        
+        /* Smooth scroll on mobile */
+        @media (max-width: 768px) {
+            html {
+                scroll-padding-top: 70px;
+            }
+        }
+
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 768px) {
+            /* Enhanced Navigation */
+            nav {
+                padding: 0.8rem 4%;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .logo::before {
+                font-size: 1.6rem;
+            }
+
             .menu-toggle {
                 display: flex;
             }
 
             .nav-links {
                 position: fixed;
-                top: 70px;
+                top: 60px;
                 left: -100%;
                 flex-direction: column;
                 background: rgba(44, 24, 16, 0.98);
                 width: 100%;
                 padding: 2rem;
                 gap: 1.5rem;
-                transition: left 0.3s ease;
+                transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             }
 
             .nav-links.active {
                 left: 0;
             }
 
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+            }
+
+            /* Enhanced Hero Section for Mobile */
+            .hero {
+                height: 100vh;
+                padding: 0 5%;
+                background-position: center center;
+                background-attachment: scroll;
+            }
+
+            .hero-content {
+                padding: 1rem;
+                max-width: 100%;
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+                line-height: 1.2;
+                margin-bottom: 1.2rem;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+                margin-bottom: 2.5rem;
+                line-height: 1.5;
+            }
+
+            .cta-button {
+                padding: 1.2rem 3rem;
+                font-size: 1.1rem;
+                width: auto;
+                display: inline-block;
+            }
+
+            /* Better Section Spacing for Mobile */
+            section {
+                padding: 3.5rem 5%;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+                margin-bottom: 0.8rem;
+                line-height: 1.3;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2.5rem;
+                padding: 0 1rem;
+            }
+
+            /* Enhanced Coffee Cards for Mobile */
+            .coffee-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                margin-top: 2rem;
+            }
+
+            .coffee-card {
+                border-radius: 25px;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            }
+
+            .coffee-card:active {
+                transform: scale(0.98);
+            }
+
+            .coffee-image {
+                height: 280px;
+            }
+
+            .coffee-info {
+                padding: 1.8rem;
+            }
+
+            .coffee-name {
+                font-size: 1.9rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .coffee-description {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+
+            /* Enhanced Gallery for Mobile */
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .gallery-item {
+                height: 280px;
+                border-radius: 20px;
+            }
+
+            /* Better About Section for Mobile */
+            .about-content {
+                font-size: 1.05rem;
+                line-height: 1.9;
+                padding: 0 0.5rem;
+            }
+
+            .about-content p {
+                margin-bottom: 1.8rem;
+            }
+
+            /* Enhanced Contact Cards for Mobile */
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-card {
+                padding: 2.5rem 2rem;
+                border-radius: 25px;
+            }
+
+            .contact-icon {
+                font-size: 3.5rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .contact-card h3 {
+                font-size: 1.6rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .contact-card p {
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+
+            /* Enhanced Footer for Mobile */
+            footer {
+                padding: 2.5rem 5%;
+            }
+
+            .social-links {
+                gap: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .social-links a {
+                font-size: 2rem;
+            }
+
+            footer p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+        }
+
+        /* Extra Small Devices (phones in portrait, less than 576px) */
+        @media (max-width: 575px) {
+            .hero h1 {
+                font-size: 2.3rem;
             }
 
             .hero .tagline {
                 font-size: 1.1rem;
             }
 
-            .section-title {
-                font-size: 2rem;
+            .cta-button {
+                padding: 1rem 2.5rem;
+                font-size: 1rem;
             }
 
-            .coffee-grid,
-            .gallery-grid {
-                grid-template-columns: 1fr;
+            .section-title {
+                font-size: 1.9rem;
+            }
+
+            .coffee-name {
+                font-size: 1.7rem;
+            }
+
+            .contact-icon {
+                font-size: 3rem;
+            }
+        }
+
+        /* Landscape Mobile Optimization */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                padding: 8rem 5% 4rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 3rem 5%;
+            }
+        }
+
+        /* Touch-friendly Improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .cta-button:active {
+                transform: translateY(-1px);
+            }
+
+            .coffee-card:hover {
+                transform: translateY(0);
+            }
+
+            .nav-links a:active {
+                background: rgba(212, 165, 116, 0.1);
+                border-radius: 8px;
+            }
+
+            .social-links a:active {
+                transform: scale(0.95);
             }
         }
     </style>
 </head>
-
 <body>
     <!-- NAVIGATION -->
     <nav id="navbar">
@@ -477,60 +704,50 @@
     <section id="coffees">
         <h2 class="section-title">Our Signature Coffees</h2>
         <p class="section-subtitle">Handcrafted with love, served with passion</p>
-
+        
         <div class="coffee-grid">
             <!-- Espresso -->
             <div class="coffee-card">
-                <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=600&q=80" alt="Espresso"
-                    class="coffee-image">
+                <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=600&q=80" alt="Espresso" class="coffee-image">
                 <div class="coffee-info">
                     <h3 class="coffee-name">Espresso</h3>
-                    <p class="coffee-description">A bold, rich shot of pure coffee essence. Perfect for those who
-                        appreciate the intense, concentrated flavor of premium beans.</p>
+                    <p class="coffee-description">A bold, rich shot of pure coffee essence. Perfect for those who appreciate the intense, concentrated flavor of premium beans.</p>
                 </div>
             </div>
 
             <!-- Americano -->
             <div class="coffee-card">
-                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&q=80" alt="Americano"
-                    class="coffee-image">
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&q=80" alt="Americano" class="coffee-image">
                 <div class="coffee-info">
                     <h3 class="coffee-name">Americano</h3>
-                    <p class="coffee-description">Smooth and satisfying, our Americano combines rich espresso with hot
-                        water for a classic, full-bodied coffee experience.</p>
+                    <p class="coffee-description">Smooth and satisfying, our Americano combines rich espresso with hot water for a classic, full-bodied coffee experience.</p>
                 </div>
             </div>
 
             <!-- Cappuccino -->
             <div class="coffee-card">
-                <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&q=80" alt="Cappuccino"
-                    class="coffee-image">
+                <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&q=80" alt="Cappuccino" class="coffee-image">
                 <div class="coffee-info">
                     <h3 class="coffee-name">Cappuccino</h3>
-                    <p class="coffee-description">The perfect harmony of espresso, steamed milk, and velvety foam. A
-                        timeless Italian favorite that never disappoints.</p>
+                    <p class="coffee-description">The perfect harmony of espresso, steamed milk, and velvety foam. A timeless Italian favorite that never disappoints.</p>
                 </div>
             </div>
 
             <!-- Latte -->
             <div class="coffee-card">
-                <img src="https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=600&q=80" alt="Latte"
-                    class="coffee-image">
+                <img src="https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=600&q=80" alt="Latte" class="coffee-image">
                 <div class="coffee-info">
                     <h3 class="coffee-name">Latte</h3>
-                    <p class="coffee-description">Creamy and smooth, our latte features espresso blended with steamed
-                        milk, topped with delicate microfoam artistry.</p>
+                    <p class="coffee-description">Creamy and smooth, our latte features espresso blended with steamed milk, topped with delicate microfoam artistry.</p>
                 </div>
             </div>
 
             <!-- Mocha -->
             <div class="coffee-card">
-                <img src="https://images.unsplash.com/photo-1607260550778-aa9d29444ce1?w=600&q=80" alt="Mocha"
-                    class="coffee-image">
+                <img src="https://images.unsplash.com/photo-1607260550778-aa9d29444ce1?w=600&q=80" alt="Mocha" class="coffee-image">
                 <div class="coffee-info">
                     <h3 class="coffee-name">Mocha</h3>
-                    <p class="coffee-description">Indulgent and decadent, combining rich espresso with premium chocolate
-                        and steamed milk. A sweet coffee lover's dream.</p>
+                    <p class="coffee-description">Indulgent and decadent, combining rich espresso with premium chocolate and steamed milk. A sweet coffee lover's dream.</p>
                 </div>
             </div>
         </div>
@@ -540,16 +757,14 @@
     <section id="gallery">
         <h2 class="section-title">Our Coffee Gallery</h2>
         <p class="section-subtitle">Experience the warmth and ambiance of Frostile</p>
-
+        
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=500&q=80"
-                    alt="Coffee Shop Interior">
+                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=500&q=80" alt="Coffee Shop Interior">
                 <div class="gallery-overlay"></div>
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&q=80"
-                    alt="Coffee Preparation">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&q=80" alt="Coffee Preparation">
                 <div class="gallery-overlay"></div>
             </div>
             <div class="gallery-item">
@@ -565,8 +780,7 @@
                 <div class="gallery-overlay"></div>
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=500&q=80"
-                    alt="Coffee Shop Ambiance">
+                <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=500&q=80" alt="Coffee Shop Ambiance">
                 <div class="gallery-overlay"></div>
             </div>
         </div>
@@ -576,19 +790,13 @@
     <section id="about">
         <h2 class="section-title">About Frostile</h2>
         <p class="section-subtitle">Our story, brewed with passion</p>
-
+        
         <div class="about-content">
-            <p>Welcome to Frostile Coffee Making, where every cup tells a story and every sip is an experience. Nestled
-                in the heart of Perumbavoor, we've been serving the finest handcrafted coffees to our beloved community.
-            </p>
-
-            <p>Our journey began with a simple passion: to bring the authentic taste of premium coffee to coffee lovers
-                who appreciate quality and craftsmanship. We carefully source our beans, master the art of roasting, and
-                train our baristas to create the perfect cup every single time.</p>
-
-            <p>At Frostile, we believe that coffee is more than just a beverage—it's a moment of comfort, a reason to
-                connect, and a daily ritual that deserves to be extraordinary. Whether you're starting your day with a
-                bold espresso or unwinding with a creamy latte, we're here to make your coffee moments memorable.</p>
+            <p>Welcome to Frostile Coffee Making, where every cup tells a story and every sip is an experience. Nestled in the heart of Perumbavoor, we've been serving the finest handcrafted coffees to our beloved community.</p>
+            
+            <p>Our journey began with a simple passion: to bring the authentic taste of premium coffee to coffee lovers who appreciate quality and craftsmanship. We carefully source our beans, master the art of roasting, and train our baristas to create the perfect cup every single time.</p>
+            
+            <p>At Frostile, we believe that coffee is more than just a beverage—it's a moment of comfort, a reason to connect, and a daily ritual that deserves to be extraordinary. Whether you're starting your day with a bold espresso or unwinding with a creamy latte, we're here to make your coffee moments memorable.</p>
         </div>
     </section>
 
@@ -596,20 +804,20 @@
     <section id="contact">
         <h2 class="section-title">Visit Us</h2>
         <p class="section-subtitle">We'd love to serve you</p>
-
+        
         <div class="contact-container">
             <div class="contact-card">
                 <div class="contact-icon">📍</div>
                 <h3>Location</h3>
                 <p>Perumbavoor<br>Kerala, India</p>
             </div>
-
+            
             <div class="contact-card">
                 <div class="contact-icon">☎️</div>
                 <h3>Phone</h3>
                 <p>9048278833</p>
             </div>
-
+            
             <div class="contact-card">
                 <div class="contact-icon">⏰</div>
                 <h3>Hours</h3>
@@ -688,5 +896,4 @@
         });
     </script>
 </body>
-
 </html>
